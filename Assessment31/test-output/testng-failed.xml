@@ -6,7 +6,7 @@
       <class name="com.atmecs.assessmenttask.testscripts.BookingHotels_Automation">
         <methods>
           <include name="initializeBrowser"/>
-          <include name="bookingHotels"/>
+          <include name="bookingACheapFourStarHotelForSixMembers"/>
         </methods>
       </class> <!-- com.atmecs.assessmenttask.testscripts.BookingHotels_Automation -->
     </classes>

@@ -35,49 +35,46 @@ public class BookingHotels_Automation extends TestBase {
 	int noOfAdults, checkInDate;
 	int noOfChilds, checkOutDate;
 	Properties properties;
-	PageActions pageactions;
+	PageActions pageactions = new PageActions();
 	Properties testdata;
-	LocatorSeparator separatelocator;
-	LogReport log;
-	AssertionHelpers assertionhelpers;
+	LocatorSeparator separatelocator = new LocatorSeparator();
+	LogReport log= new LogReport();
+	AssertionHelpers assertionhelpers = new AssertionHelpers();
 	String sheetName;
 	ExcelFileReader excelreader;
-	ExcelFileWriter excelwriter;
+	ExcelFileWriter excelwriter = new ExcelFileWriter();
 	ExtentReport extentReport = new ExtentReport();
 	BookingHotels_AutomationHelpers bookingHotelsHelpers = new BookingHotels_AutomationHelpers();
     DateHandlingHelpers dateHandlingHelpers= new DateHandlingHelpers();
 	
-	public BookingHotels_Automation() throws IOException {
+	
+    
+    public BookingHotels_Automation() throws IOException {
 
-		pageactions = new PageActions();
 		properties = new PropertiesFileReader().loadingPropertyFile(FilePath.LOCATORS_FILE);
 		testdata = new PropertiesFileReader().loadingPropertyFile(FilePath.EXPECTEDDATA_FILE);
-		separatelocator = new LocatorSeparator();
-		assertionhelpers = new AssertionHelpers();
-
-		log = new LogReport();
 		excelreader = new ExcelFileReader(FilePath.TESTDATA_FILE);
-		excelwriter = new ExcelFileWriter();
+		
 	}
 
 	/**
-	 * This method is to function the booking of the hotels in an automated way
-	 *
+	 * This method is to function the automated  booking of lowest price four star hotel 
+	 * The automation process is splitted into four methods: 1.Searching the Hotel by entering the required details
+	 * 2.To validate the details in the  Hotel Results Page 3.Sorting the hotel price of four star hotels
+	 * 4.Validating customer and hotel details in Hotel Details Page
 	 */
-	@Test
-	public void bookingHotels() throws IOException, InterruptedException {
+	
+    
+     @Test
+	public void bookingACheapFourStarHotelForSixMembers() throws IOException, InterruptedException {
 
-        bookingHotelsHelpers.searchingTheHotels(driver);
-	//  bookingHotelsHelpers.hotelsSearchModification(driver);
-		bookingHotelsHelpers.findingTheFourStarRatedHotelAtLowestPrice(driver);
-        bookingHotelsHelpers.hotelDetailValidation(driver);
+        bookingHotelsHelpers.searchingTheAvailableHotelsForTheRequiredDate(driver);
+	    bookingHotelsHelpers.validatingTheCustomerDetailsInHotelResultsPage(driver);
+		bookingHotelsHelpers.findingTheFourStarRatedHotelAtDifferentPriceRates(driver);
+        bookingHotelsHelpers.validatingDetailsInHotelDetailsPage(driver);
+        
 	}
-
-//	@AfterTest
-//	public void closingTheBrowser(WebDriver driver) {
-//
-//		driver.close();
-//
-//	}
+   
+ 
 
 }

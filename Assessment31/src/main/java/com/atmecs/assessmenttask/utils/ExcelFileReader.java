@@ -17,9 +17,6 @@ import com.atmecs.assessmenttask.constants.FilePath;
  * This class is used to read the excel file's particular cell data and get the
  * row count and column count of the excel file
  */
-
-
-
 public class ExcelFileReader {
 
 	XSSFWorkbook workbook;
@@ -27,7 +24,9 @@ public class ExcelFileReader {
 	File file;
 	String path;
      Properties testdata;
-	/**
+	
+     
+     /**
 	 * This constructor will get the filepath of the testdata file and create the
 	 * Xssfworkbook object
 	 */
@@ -39,16 +38,31 @@ public class ExcelFileReader {
 		testdata= new PropertiesFileReader().loadingPropertyFile(FilePath.EXPECTEDDATA_FILE);
 	}
 
+	
+	
 	/**
 	 * This method will return the value of the particular cell from the excel file
 	 */
-	public String gettingExcelFileCellValue(String sheetName, int rowNumber, int cellNumber) {
-
+	public String gettingExcelFileCellValue(String sheetName, int rowNumber, String columnName) {
+        
 		sheet = workbook.getSheet(sheetName);
-		String data = sheet.getRow(rowNumber).getCell(cellNumber).getStringCellValue();
+		String data = null;
+
+		int columnNumber = 0;
+	
+		for (int cellIndex = 1; cellIndex < countingTheNumberOfColumns(sheetName, rowNumber); cellIndex++) {
+			if (workbook.getSheet(sheetName).getRow(rowNumber).getCell(cellIndex).getStringCellValue()
+					.equals(columnName)) {
+				columnNumber = cellIndex;
+			}
+			data = sheet.getRow(rowNumber).getCell(columnNumber).getStringCellValue();
+			
+	}
 		return data;
 	}
-
+	
+	
+	
 	/**
 	 * This method will return the total number of rows in an excel file
 	 */
@@ -58,6 +72,9 @@ public class ExcelFileReader {
 		return rowCount;
 	}
 
+	
+	
+	
 	/**
 	 * This method will return the total number of column in an excel file
 	 */
@@ -67,6 +84,9 @@ public class ExcelFileReader {
 		return columnCount;
 	}
 
+
+	
+	
 	/**
 	 * This method is used by testdata provider to provide each row value to the
 	 * maximum column limit
@@ -76,21 +96,19 @@ public class ExcelFileReader {
 		int index;
 		String[] array = new String[30];
 		for (index = rowNumber; index < array.length; index++) {
-			array[index - 1] = gettingExcelFileCellValue(sheetName, index, columnNumber);
+			array[index - 1] = sheet.getRow(rowNumber).getCell(columnNumber).getStringCellValue();
 		}
 		return array[index - 1];
 	}
 
+	
+	
+	
+	
 	/**
-	 * This method is used to get the values of the complete column by using the
+	 * This method is used to get the  complete values of a column by using the
 	 * sheetname,columnname as an input
 	 */
-	
-	
-	//public String 
-	
-	
-	
 	public String[] gettingValuesOfAColumn(String sheetName, String columnName) {
 		int columnNumber = 0;
 		int rowNumber = 0;
@@ -109,6 +127,10 @@ public class ExcelFileReader {
 		}
 		return excelColumnData;
 	}
+	
+	
+	
+	
 	
 	/**
 	 * This method will get the data from Excel File 

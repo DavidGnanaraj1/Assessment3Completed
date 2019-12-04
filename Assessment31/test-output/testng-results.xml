@@ -1,82 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="1" ignored="0" total="1" passed="0">
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="114242" started-at="2019-12-04T09:59:30Z" finished-at="2019-12-04T10:01:24Z">
+  <suite name="Default suite" duration-ms="99384" started-at="2019-12-04T16:11:46Z" finished-at="2019-12-04T16:13:25Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="114242" started-at="2019-12-04T09:59:30Z" finished-at="2019-12-04T10:01:24Z">
+    <test name="Default test" duration-ms="99384" started-at="2019-12-04T16:11:46Z" finished-at="2019-12-04T16:13:25Z">
       <class name="com.atmecs.assessmenttask.testscripts.BookingHotels_Automation">
-        <test-method status="PASS" signature="initializeBrowser()[pri:0, instance:com.atmecs.assessmenttask.testscripts.BookingHotels_Automation@fa36558]" name="initializeBrowser" is-config="true" duration-ms="10623" started-at="2019-12-04T09:59:30Z" finished-at="2019-12-04T09:59:41Z">
+        <test-method status="PASS" signature="initializeBrowser()[pri:0, instance:com.atmecs.assessmenttask.testscripts.BookingHotels_Automation@7c1e2a9e]" name="initializeBrowser" is-config="true" duration-ms="12070" started-at="2019-12-04T16:11:46Z" finished-at="2019-12-04T16:11:58Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initializeBrowser -->
-        <test-method status="FAIL" signature="bookingHotels()[pri:0, instance:com.atmecs.assessmenttask.testscripts.BookingHotels_Automation@fa36558]" name="bookingHotels" duration-ms="103577" started-at="2019-12-04T09:59:41Z" finished-at="2019-12-04T10:01:24Z">
-          <exception class="org.openqa.selenium.StaleElementReferenceException">
-            <message>
-              <![CDATA[stale element reference: element is not attached to the page document
-  (Session info: chrome=78.0.3904.108)
-For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/stale_element_reference.html
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'ATMECSINDT-046', ip: '50.50.50.51', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_221'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 78.0.3904.108, chrome: {chromedriverVersion: 78.0.3904.70 (edb9c9f3de024..., userDataDir: C:\Users\DAVID~1.EAS\AppDat...}, goog:chromeOptions: {debuggerAddress: localhost:54085}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
-Session ID: c82bea490c76f5f05f2226de0379f7ea]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.StaleElementReferenceException: stale element reference: element is not attached to the page document
-  (Session info: chrome=78.0.3904.108)
-For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/stale_element_reference.html
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'ATMECSINDT-046', ip: '50.50.50.51', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_221'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 78.0.3904.108, chrome: {chromedriverVersion: 78.0.3904.70 (edb9c9f3de024..., userDataDir: C:\Users\DAVID~1.EAS\AppDat...}, goog:chromeOptions: {debuggerAddress: localhost:54085}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
-Session ID: c82bea490c76f5f05f2226de0379f7ea
-at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
-at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
-at java.lang.reflect.Constructor.newInstance(Unknown Source)
-at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
-at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
-at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
-at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
-at org.openqa.selenium.remote.RemoteWebDriver.executeScript(RemoteWebDriver.java:489)
-at com.atmecs.Assessment3.assessmenttask.pageactions.PageActionsScrollDown.pageScrollDownTillElementVisible(PageActionsScrollDown.java:29)
-at com.atmecs.assessmenttask.helpermethods.BookingHotels_AutomationHelpers.findingTheFourStarRatedHotelAtLowestPrice(BookingHotels_AutomationHelpers.java:208)
-at com.atmecs.assessmenttask.testscripts.BookingHotels_Automation.bookingHotels(BookingHotels_Automation.java:72)
-at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-at java.lang.reflect.Method.invoke(Unknown Source)
-at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
-at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
-at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
-at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
-at org.testng.TestRunner.privateRun(TestRunner.java:648)
-at org.testng.TestRunner.run(TestRunner.java:505)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
-at org.testng.SuiteRunner.run(SuiteRunner.java:364)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
-at org.testng.TestNG.runSuites(TestNG.java:1049)
-at org.testng.TestNG.run(TestNG.java:1017)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.StaleElementReferenceException -->
+        <test-method status="PASS" signature="bookingACheapFourStarHotelForSixMembers()[pri:0, instance:com.atmecs.assessmenttask.testscripts.BookingHotels_Automation@7c1e2a9e]" name="bookingACheapFourStarHotelForSixMembers" duration-ms="87281" started-at="2019-12-04T16:11:58Z" finished-at="2019-12-04T16:13:25Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- bookingHotels -->
+        </test-method> <!-- bookingACheapFourStarHotelForSixMembers -->
       </class> <!-- com.atmecs.assessmenttask.testscripts.BookingHotels_Automation -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->

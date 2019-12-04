@@ -1172,3 +1172,171 @@
 2019-12-04 15:30:02,836  INFO [main] LogReport:26 - Redirecting to the Searched results
 2019-12-04 15:30:02,866  INFO [main] LogReport:26 - Result of Hotel Search page verified
 2019-12-04 15:31:18,879  INFO [main] LogReport:26 - Found all the Hotel in the 4 star rating with lowest price
+2019-12-04 15:41:42,295  INFO [main] LogReport:26 - Chrome browser opens
+2019-12-04 15:41:47,693  INFO [main] LogReport:26 - Application is open
+2019-12-04 15:41:49,183  INFO [main] LogReport:26 - PageTitle validated
+2019-12-04 15:42:07,979  INFO [main] LogReport:26 - Redirecting to the Searched results
+2019-12-04 15:42:08,005  INFO [main] LogReport:26 - Result of Hotel Search page verified
+2019-12-04 15:43:21,338  INFO [main] LogReport:26 - Found all the Hotel in the 4 star rating with lowest price
+2019-12-04 15:47:50,108  INFO [main] LogReport:26 - Chrome browser opens
+2019-12-04 15:47:54,808  INFO [main] LogReport:26 - Application is open
+2019-12-04 15:48:32,647  INFO [main] LogReport:26 - Chrome browser opens
+2019-12-04 15:48:38,034  INFO [main] LogReport:26 - Application is open
+2019-12-04 15:50:03,323  INFO [main] LogReport:26 - Chrome browser opens
+2019-12-04 15:50:09,081  INFO [main] LogReport:26 - Application is open
+2019-12-04 15:53:33,666  INFO [main] LogReport:26 - Chrome browser opens
+2019-12-04 15:53:39,220  INFO [main] LogReport:26 - Application is open
+2019-12-04 15:53:40,803  INFO [main] LogReport:26 - PageTitle validated
+2019-12-04 15:53:59,845  INFO [main] LogReport:26 - Redirecting to the Searched results
+2019-12-04 15:53:59,875  INFO [main] LogReport:26 - Result of Hotel Search page verified
+2019-12-04 15:55:15,322  INFO [main] LogReport:26 - Found all the Hotel in the 4 star rating with lowest price
+2019-12-04 16:02:44,118  INFO [main] LogReport:26 - Chrome browser opens
+2019-12-04 16:02:49,415  INFO [main] LogReport:26 - Application is open
+2019-12-04 16:02:50,863  INFO [main] LogReport:26 - PageTitle validated
+2019-12-04 16:03:14,021  INFO [main] LogReport:26 - Redirecting to the Searched results
+2019-12-04 16:03:14,044  INFO [main] LogReport:26 - Result of Hotel Search page verified
+2019-12-04 16:04:30,493  INFO [main] LogReport:26 - Found all the Hotel in the 4 star rating with lowest price
+2019-12-04 16:07:25,817  INFO [main] LogReport:26 - Chrome browser opens
+2019-12-04 16:07:34,610  INFO [main] LogReport:26 - Application is open
+2019-12-04 16:07:36,269  INFO [main] LogReport:26 - PageTitle validated
+2019-12-04 16:07:56,926  INFO [main] LogReport:26 - Redirecting to the Searched results
+2019-12-04 16:07:56,953  INFO [main] LogReport:26 - Result of Hotel Search page verified
+2019-12-04 16:09:12,810  INFO [main] LogReport:26 - Found all the Hotel in the 4 star rating with lowest price
+2019-12-04 16:15:08,457  INFO [main] LogReport:26 - Chrome browser opens
+2019-12-04 16:15:13,374  INFO [main] LogReport:26 - Application is open
+2019-12-04 16:15:14,935  INFO [main] LogReport:26 - PageTitle validated
+2019-12-04 16:15:36,155  INFO [main] LogReport:26 - Redirecting to the Searched results
+2019-12-04 16:15:36,183  INFO [main] LogReport:26 - Result of Hotel Search page verified
+2019-12-04 16:16:49,635  INFO [main] LogReport:26 - Found all the Hotel in the 4 star rating with lowest price
+2019-12-04 16:17:19,404  INFO [main] LogReport:26 - Chrome browser opens
+2019-12-04 16:17:25,774  INFO [main] LogReport:26 - Application is open
+2019-12-04 16:17:27,241  INFO [main] LogReport:26 - PageTitle validated
+2019-12-04 16:17:47,354  INFO [main] LogReport:26 - Redirecting to the Searched results
+2019-12-04 17:06:10,050  INFO [main] LogReport:26 - Chrome browser opens
+2019-12-04 17:06:14,857  INFO [main] LogReport:26 - Application is open
+2019-12-04 17:06:16,353  INFO [main] LogReport:26 - PageTitle validated
+2019-12-04 17:11:16,072  INFO [main] LogReport:26 - Chrome browser opens
+2019-12-04 17:11:21,005  INFO [main] LogReport:26 - Application is open
+2019-12-04 17:11:22,564  INFO [main] LogReport:26 - PageTitle validated
+2019-12-04 17:11:41,256  INFO [main] LogReport:26 - Redirecting to the Searched results
+2019-12-04 17:12:34,827  INFO [main] LogReport:26 - Chrome browser opens
+2019-12-04 17:12:39,638  INFO [main] LogReport:26 - Application is open
+2019-12-04 17:12:41,063  INFO [main] LogReport:26 - PageTitle validated
+2019-12-04 17:12:59,168  INFO [main] LogReport:26 - Redirecting to the Searched results
+2019-12-04 17:13:00,538  INFO [main] LogReport:26 - Result of Hotel Search page verified
+2019-12-04 17:13:54,615  INFO [main] LogReport:26 - Found all the Hotel in the 4 star rating with lowest price
+2019-12-04 17:18:56,189  INFO [main] LogReport:26 - Chrome browser opens
+2019-12-04 17:19:01,941  INFO [main] LogReport:26 - Application is open
+2019-12-04 17:19:03,368  INFO [main] LogReport:26 - PageTitle validated
+2019-12-04 17:19:21,501  INFO [main] LogReport:26 - Redirecting to the Hotel Search results
+2019-12-04 17:19:22,616  INFO [main] LogReport:26 - CheckIn Date-14-12-2019 CheckOut Date-16-12-2019
+2019-12-04 17:19:22,748  INFO [main] LogReport:26 - Result of Hotel Search page verified
+2019-12-04 17:20:17,173  INFO [main] LogReport:26 - Found all the Hotel in the 4 star rating with lowest price
+2019-12-04 17:20:17,305  INFO [main] LogReport:26 - Four Star hotel with LowestPrice  -Gardeenia Comfortes
+2019-12-04 17:20:22,120  INFO [main] LogReport:26 - CheckIn Date-14-12-2019 CheckOut Date-16-12-2019
+2019-12-04 17:24:16,092  INFO [main] LogReport:26 - Chrome browser opens
+2019-12-04 17:24:21,134  INFO [main] LogReport:26 - Application is open
+2019-12-04 17:24:22,618  INFO [main] LogReport:26 - PageTitle validated
+2019-12-04 17:24:40,692  INFO [main] LogReport:26 - Redirecting to the Hotel Search results
+2019-12-04 17:24:42,058  INFO [main] LogReport:26 - Result of Hotel Search page verified
+2019-12-04 17:25:37,656  INFO [main] LogReport:26 - Found all the Hotel in the 4 star rating with lowest price
+2019-12-04 17:25:37,823  INFO [main] LogReport:26 - Four Star hotel with LowestPrice  -Gardeenia Comfortes
+2019-12-04 18:30:48,471  INFO [main] LogReport:26 - Chrome browser opens
+2019-12-04 18:30:55,615  INFO [main] LogReport:26 - Application is open
+2019-12-04 18:30:57,147  INFO [main] LogReport:26 - PageTitle validated
+2019-12-04 18:31:15,369  INFO [main] LogReport:26 - Redirecting to the Hotel Search results
+2019-12-04 18:31:16,640  INFO [main] LogReport:26 - Result of Hotel Search page verified
+2019-12-04 18:32:10,837  INFO [main] LogReport:26 - Found all the Hotel in the 4 star rating with lowest price
+2019-12-04 19:25:41,816  INFO [main] LogReport:26 - Chrome browser opens
+2019-12-04 19:25:48,914  INFO [main] LogReport:26 - Application is open
+2019-12-04 19:25:50,502  INFO [main] LogReport:26 - PageTitle validated
+2019-12-04 19:26:09,153  INFO [main] LogReport:26 - Redirecting to the Hotel Search results
+2019-12-04 19:26:10,391  INFO [main] LogReport:26 - Result of Hotel Search page verified
+2019-12-04 19:27:01,443  INFO [main] LogReport:26 - Found all the Hotel in the 4 star rating with lowest price
+2019-12-04 19:27:01,571  INFO [main] LogReport:26 - Four Star hotel with LowestPrice  -Courtyard by Marriott Bengaluru Outer Ring Road
+2019-12-04 19:29:22,398  INFO [main] LogReport:26 - Chrome browser opens
+2019-12-04 19:29:27,337  INFO [main] LogReport:26 - Application is open
+2019-12-04 19:29:28,865  INFO [main] LogReport:26 - PageTitle validated
+2019-12-04 19:29:47,477  INFO [main] LogReport:26 - Redirecting to the Hotel Search results
+2019-12-04 19:29:48,649  INFO [main] LogReport:26 - Result of Hotel Search page verified
+2019-12-04 19:30:39,643  INFO [main] LogReport:26 - Found all the Hotel in the 4 star rating with lowest price
+2019-12-04 19:30:39,779  INFO [main] LogReport:26 - Four Star hotel with LowestPrice  -Gardeenia Comfortes
+2019-12-04 19:47:28,008  INFO [main] LogReport:26 - Chrome browser opens
+2019-12-04 19:47:33,890  INFO [main] LogReport:26 - Application is open
+2019-12-04 19:53:51,675  INFO [main] LogReport:26 - Chrome browser opens
+2019-12-04 19:53:56,255  INFO [main] LogReport:26 - Application is open
+2019-12-04 19:55:11,611  INFO [main] LogReport:26 - Chrome browser opens
+2019-12-04 19:55:17,163  INFO [main] LogReport:26 - Application is open
+2019-12-04 19:58:11,360  INFO [main] LogReport:26 - Chrome browser opens
+2019-12-04 19:58:16,281  INFO [main] LogReport:26 - Application is open
+2019-12-04 19:59:40,823  INFO [main] LogReport:26 - Chrome browser opens
+2019-12-04 19:59:46,913  INFO [main] LogReport:26 - Application is open
+2019-12-04 20:06:45,095  INFO [main] LogReport:26 - Chrome browser opens
+2019-12-04 20:06:50,726  INFO [main] LogReport:26 - Application is open
+2019-12-04 20:06:52,233  INFO [main] LogReport:26 - PageTitle validated
+2019-12-04 20:07:10,447  INFO [main] LogReport:26 - Redirecting to the Hotel Search results
+2019-12-04 20:07:11,602  INFO [main] LogReport:26 - Result of Hotel Search page verified
+2019-12-04 20:08:02,327  INFO [main] LogReport:26 - Found all the Hotel in the 4 star rating with lowest price
+2019-12-04 20:08:02,454  INFO [main] LogReport:26 - Four Star hotel with LowestPrice  -Gardeenia Comfortes
+2019-12-04 20:09:40,537  INFO [main] LogReport:26 - Chrome browser opens
+2019-12-04 20:09:45,449  INFO [main] LogReport:26 - Application is open
+2019-12-04 20:09:46,881  INFO [main] LogReport:26 - PageTitle validated
+2019-12-04 20:19:23,562  INFO [main] LogReport:26 - Chrome browser opens
+2019-12-04 20:19:28,893  INFO [main] LogReport:26 - Application is open
+2019-12-04 20:19:30,468  INFO [main] LogReport:26 - PageTitle validated
+2019-12-04 20:23:04,635  INFO [main] LogReport:26 - Chrome browser opens
+2019-12-04 20:23:09,185  INFO [main] LogReport:26 - Application is open
+2019-12-04 20:23:10,672  INFO [main] LogReport:26 - PageTitle validated
+2019-12-04 20:33:18,322  INFO [main] LogReport:26 - Chrome browser opens
+2019-12-04 20:33:24,207  INFO [main] LogReport:26 - Application is open
+2019-12-04 20:33:25,776  INFO [main] LogReport:26 - PageTitle validated
+2019-12-04 20:34:32,623  INFO [main] LogReport:26 - Chrome browser opens
+2019-12-04 20:34:37,715  INFO [main] LogReport:26 - Application is open
+2019-12-04 20:34:39,216  INFO [main] LogReport:26 - PageTitle validated
+2019-12-04 20:34:55,141  INFO [main] LogReport:26 - Redirecting to the Hotel Search results
+2019-12-04 20:34:56,298  INFO [main] LogReport:26 - Result of Hotel Search page verified
+2019-12-04 20:36:12,891  INFO [main] LogReport:26 - Chrome browser opens
+2019-12-04 20:36:20,674  INFO [main] LogReport:26 - Application is open
+2019-12-04 20:36:22,178  INFO [main] LogReport:26 - PageTitle validated
+2019-12-04 20:41:10,813  INFO [main] LogReport:26 - Chrome browser opens
+2019-12-04 20:41:16,653  INFO [main] LogReport:26 - Application is open
+2019-12-04 20:41:18,218  INFO [main] LogReport:26 - PageTitle validated
+2019-12-04 20:42:57,828  INFO [main] LogReport:26 - Chrome browser opens
+2019-12-04 20:43:03,339  INFO [main] LogReport:26 - Application is open
+2019-12-04 20:43:04,901  INFO [main] LogReport:26 - PageTitle validated
+2019-12-04 20:43:21,968  INFO [main] LogReport:26 - Redirecting to the Hotel Search results
+2019-12-04 20:43:23,259  INFO [main] LogReport:26 - Result of Hotel Search page verified
+2019-12-04 20:44:21,575  INFO [main] LogReport:26 - Found all the Hotel in the 4 star rating with lowest price
+2019-12-04 20:44:21,695  INFO [main] LogReport:26 - Four Star hotel with LowestPrice  -Gardeenia Comfortes
+2019-12-04 20:45:25,143  INFO [main] LogReport:26 - Chrome browser opens
+2019-12-04 20:45:30,294  INFO [main] LogReport:26 - Application is open
+2019-12-04 20:45:31,777  INFO [main] LogReport:26 - PageTitle validated
+2019-12-04 20:46:02,190  INFO [main] LogReport:26 - Chrome browser opens
+2019-12-04 20:46:10,080  INFO [main] LogReport:26 - Application is open
+2019-12-04 20:46:11,699  INFO [main] LogReport:26 - PageTitle validated
+2019-12-04 20:47:31,027  INFO [main] LogReport:26 - Chrome browser opens
+2019-12-04 20:47:36,547  INFO [main] LogReport:26 - Application is open
+2019-12-04 20:47:38,093  INFO [main] LogReport:26 - PageTitle validated
+2019-12-04 20:51:07,371  INFO [main] LogReport:26 - Chrome browser opens
+2019-12-04 20:51:14,451  INFO [main] LogReport:26 - Application is open
+2019-12-04 20:51:15,996  INFO [main] LogReport:26 - PageTitle validated
+2019-12-04 20:54:47,032  INFO [main] LogReport:26 - Chrome browser opens
+2019-12-04 20:54:55,634  INFO [main] LogReport:26 - Application is open
+2019-12-04 20:54:57,221  INFO [main] LogReport:26 - PageTitle validated
+2019-12-04 21:19:08,387  INFO [main] LogReport:26 - Chrome browser opens
+2019-12-04 21:19:15,199  INFO [main] LogReport:26 - Application is open
+2019-12-04 21:22:43,205  INFO [main] LogReport:26 - Chrome browser opens
+2019-12-04 21:22:49,329  INFO [main] LogReport:26 - Application is open
+2019-12-04 21:37:36,838  INFO [main] LogReport:26 - Chrome browser opens
+2019-12-04 21:37:42,073  INFO [main] LogReport:26 - Application is open
+2019-12-04 21:38:59,692  INFO [main] LogReport:26 - Chrome browser opens
+2019-12-04 21:39:04,661  INFO [main] LogReport:26 - Application is open
+2019-12-04 21:40:17,357  INFO [main] LogReport:26 - Chrome browser opens
+2019-12-04 21:40:22,750  INFO [main] LogReport:26 - Application is open
+2019-12-04 21:41:50,375  INFO [main] LogReport:26 - Chrome browser opens
+2019-12-04 21:41:56,927  INFO [main] LogReport:26 - Application is open
+2019-12-04 21:41:58,686  INFO [main] LogReport:26 - PageTitle validated
+2019-12-04 21:42:19,445  INFO [main] LogReport:26 - Redirecting to the Hotel Search results
+2019-12-04 21:42:20,710  INFO [main] LogReport:26 - Result of Hotel Search page verified
+2019-12-04 21:43:19,670  INFO [main] LogReport:26 - Found all the Hotel in the 4 star rating with lowest price
+2019-12-04 21:43:19,901  INFO [main] LogReport:26 - Four Star hotel with LowestPrice  -Gardeenia Comfortes

@@ -1,5 +1,8 @@
 package com.atmecs.assessmenttask.helpermethods;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -7,6 +10,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Properties;
 
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -26,226 +30,252 @@ import com.atmecs.assessmenttask.utils.LocatorSeparator;
 import com.atmecs.assessmenttask.utils.PropertiesFileReader;
 
 public class BookingHotels_AutomationHelpers {
+
 	PageActionsScrollDown pageScroll = new PageActionsScrollDown();
 	Properties properties;
-	PageActions pageactions;
-	Properties testdata;
-	LocatorSeparator separatelocator;
+	PageActions pagActions;
+	Properties testData;
+	LocatorSeparator separateLocators;
 	LogReport log;
-	AssertionHelpers assertionhelpers;
+	AssertionHelpers assertionHelpers;
 	String sheetName;
-	ExcelFileReader excelreader;
-	ExcelFileWriter excelwriter;
+	ExcelFileReader excelReader;
+	ExcelFileWriter excelWriter;
 	ExtentReport extentReport = new ExtentReport();
 	String noOfStars[];
 	String noOfStarsExpected = "4 / 5";
 	String dateSplittedToArray[];
-	int checkInDateIntFormat;
-	String checkInDate;
+	int checkInDateIntegerFormat;
+
+	List<Double> listOfHotelPriceAfterSorting = new ArrayList<Double>();
 	int hotelPriceArray[];
-	int priceIndex = 0, finalIndex=1;
-	int lowestPriceIndex,pageIndex,allHotelPriceIndex=0;
-    DateHandlingHelpers dateHelpers= new DateHandlingHelpers();
+	int priceIndex = 0, finalIndex = 1;
+	int lowestPriceIndex, pageIndex, allHotelPriceIndex = 0;
+	DateHandlingHelpers dateHelpers = new DateHandlingHelpers();
 	int size;
 	int noOfAdults;
-	int noOfChilds, checkOutDate;
+	int noOfChilds;
+	String allHotelPriceTextArray[] = new String[2];
 
+	List<Double> allHotelPriceList = new ArrayList<Double>();
+	List<Double> listOfHotelPrice = new ArrayList<Double>();
+	List<WebElement> hotelRatingsElement;
+	List<WebElement> detailsButton;
+	WebElement viewMoreButton;
+	String allHotelsPriceText;
+	double allHotelPrice;
+	String priceText;
+	String priceTextArray[] = new String[2];
+	double removedSymbols;
+	int rowNumber = 1;
 
 	public BookingHotels_AutomationHelpers() throws IOException {
 
-		pageactions = new PageActions();
+		pagActions = new PageActions();
 		properties = new PropertiesFileReader().loadingPropertyFile(FilePath.LOCATORS_FILE);
-		testdata = new PropertiesFileReader().loadingPropertyFile(FilePath.EXPECTEDDATA_FILE);
-		separatelocator = new LocatorSeparator();
-		assertionhelpers = new AssertionHelpers();
+		testData = new PropertiesFileReader().loadingPropertyFile(FilePath.EXPECTEDDATA_FILE);
+		separateLocators = new LocatorSeparator();
+		assertionHelpers = new AssertionHelpers();
 
 		log = new LogReport();
-		excelreader = new ExcelFileReader(FilePath.TESTDATA_FILE);
-		excelwriter = new ExcelFileWriter();
+		excelReader = new ExcelFileReader(FilePath.TESTDATA_FILE);
+		excelWriter = new ExcelFileWriter();
 	}
 
-	public WebElement webElement(WebDriver driver,String elementLocator) {
-		WebElement targetElement=driver.findElement(separatelocator.separatingLocators(properties.getProperty(elementLocator)));
+	/**
+	 * This method is used to create the WebElement by giving the element locator as
+	 * an input
+	 */
+	public WebElement webElement(WebDriver driver, String elementLocator) {
+
+		WebElement targetElement = driver
+				.findElement(separateLocators.separatingLocators(properties.getProperty(elementLocator)));
 		return targetElement;
 	}
-	
-	public int calculatingCheckInDate() {
+
+	/**
+	 * This method is used to get the current system date and add the number of days
+	 * need to be added to the current date, and return the checkIn date
+	 * 
+	 * @throws IOException
+	 */
+	public int calculatingCheckInDate() throws IOException {
+		sheetName = testData.getProperty("expdata.sheetname");
 
 		LocalDate currentDate = LocalDate.now();
-		LocalDate dateAfterTenDays = currentDate.plusDays(Integer.parseInt(testdata.getProperty("expdata.checkindate")));
-		checkInDate = dateAfterTenDays.toString();
+
+		LocalDate dateAfterTenDays = currentDate.plusDays(10);
+		String checkInDate = dateAfterTenDays.toString();
 
 		dateSplittedToArray = new String[3];
 		dateSplittedToArray = checkInDate.split("-");
-		checkInDateIntFormat = Integer.parseInt(dateSplittedToArray[2]);
-		return checkInDateIntFormat;
+		checkInDateIntegerFormat = Integer.parseInt(dateSplittedToArray[2]);
+
+		return checkInDateIntegerFormat;
 
 	}
 
-	public void searchingTheHotels(WebDriver driver) throws InterruptedException {
-		
+	/**
+	 * To find out the available hotels for the required number of people and
+	 * required date
+	 * 
+	 * @throws IOException
+	 */
+	public void searchingTheAvailableHotelsForTheRequiredDate(WebDriver driver)
+			throws InterruptedException, IOException {
+
+		String checkInDate = Integer.toString(calculatingCheckInDate());
+		String checkOutDate = Integer.toString(calculatingCheckInDate() + 2);
+
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-		noOfAdults = Integer.parseInt(testdata.getProperty("expdata.noofadults"));
-		noOfChilds = Integer.parseInt(testdata.getProperty("expdata.noofchild"));
-		sheetName = testdata.getProperty("expdata.sheetname");
 
-		assertionhelpers.assertingPageTitle(driver, "expdata.pagetitle");
+		noOfAdults = Integer.parseInt(testData.getProperty("expdata.noofadults"));
+		noOfChilds = Integer.parseInt(testData.getProperty("expdata.noofchild"));
+		sheetName = testData.getProperty("expdata.sheetname");
+
+		assertionHelpers.assertingPageTitle(driver, "expdata.pagetitle");
 		log.info("PageTitle validated");
-        Thread.sleep(3000);
-       
-      //  driver.findElement(By.xpath("(//div[@class='select2-search'])[4]")).click();
-		driver.findElement(By.xpath("//input[@id=\"s2id_autogen2\"]")).sendKeys(testdata.getProperty("expdata.cityname"));
-       
-        pageactions.clickingTheElement(driver, properties.getProperty("loc.hoteldestinationsearch"));
-        pageactions.clickingTheElement(driver, properties.getProperty("loc.checkindate"));
-	    String checkInDate=Integer.toString(calculatingCheckInDate());
-	    
-		WebElement checkInDateElement=driver.findElement(By.xpath("(//div[@data-date='"+checkInDate+"'])[1]"));
+
+		driver.findElement(separateLocators.separatingLocators(properties.getProperty("loc.cityname")))
+				.sendKeys(testData.getProperty("expdata.cityname"));
+		pagActions.clickingTheElement(driver, properties.getProperty("loc.hoteldestinationsearch"));
+		pagActions.clickingTheElement(driver, properties.getProperty("loc.checkindate"));
+
+		WebElement checkInDateElement = driver.findElement(By.xpath("(//div[@data-date='" + checkInDate + "'])[1]"));
 		checkInDateElement.click();
-		String checkOutDate=Integer.toString(calculatingCheckInDate()+2);
-		WebElement checkOutDateElement=driver.findElement(By.xpath("(//div[@data-date='"+checkOutDate+"'])[2]"));
+
+		WebElement checkOutDateElement = driver.findElement(By.xpath("(//div[@data-date='" + checkOutDate + "'])[2]"));
 		checkOutDateElement.click();
-		
-		pageactions.clickingTheElement(driver, properties.getProperty("loc.checkoutbox"));
-	for(int adultsIndex=0;adultsIndex<noOfAdults-2;adultsIndex++) {
-		pageactions.clickingTheElement(driver, properties.getProperty("loc.adultplusbtn"));	
-		pageactions.clickingTheElement(driver, properties.getProperty("loc.outerarea"));
-		Thread.sleep(3000);
+		pagActions.clickingTheElement(driver, properties.getProperty("loc.checkoutbox"));
+
+		for (int adultsIndex = 0; adultsIndex < noOfAdults - 2; adultsIndex++) {
+
+			pagActions.clickingTheElement(driver, properties.getProperty("loc.adultplusbtn"));
+			pagActions.clickingTheElement(driver, properties.getProperty("loc.outerarea"));
+			Thread.sleep(3000);
 		}
-	for(int childIndex=0;childIndex<noOfChilds;childIndex++) {
-			pageactions.clickingTheElement(driver, properties.getProperty("loc.childplusbtn"));		
-			pageactions.clickingTheElement(driver, properties.getProperty("loc.outerarea"));
+		for (int childIndex = 0; childIndex < noOfChilds; childIndex++) {
+
+			pagActions.clickingTheElement(driver, properties.getProperty("loc.childplusbtn"));
+			pagActions.clickingTheElement(driver, properties.getProperty("loc.outerarea"));
 		}
-		pageactions.clickingTheElement(driver,properties.getProperty("loc.button"));	
-	   	log.info("Redirecting to the Searched results");
+		pagActions.clickingTheElement(driver, properties.getProperty("loc.button"));
+		log.info("Redirecting to the Hotel Search results");
 	}
 
-	public void findingTheFourStarRatedHotelAtLowestPrice(WebDriver driver) throws InterruptedException {
-	
-		assertionhelpers.assertingPageTitle(driver,"expdata.hotelresultstitle");
+	/**
+	 * This method finds out the four star rating hotel at the lowest price
+	 *
+	 */
+	public void findingTheFourStarRatedHotelAtDifferentPriceRates(WebDriver driver) throws InterruptedException {
+
+		List<WebElement> allHotelPricelist = driver
+				.findElements(separateLocators.separatingLocators(properties.getProperty("loc.pricecommonlocator")));
+
+		assertionHelpers.assertingPageTitle(driver, "expdata.hotelresultstitle");
 		log.info("Result of Hotel Search page verified");
-		List<Double> allHotelPriceList = new ArrayList<Double>();
-		List<Double> listOfHotelPrice = new ArrayList<Double>();
-		List<WebElement> hotelRatingsElement = driver.findElements(By.xpath("//span[@class='bg-primary']"));
-		List<WebElement> hotelPriceElement=driver.findElements(By.xpath("//div[@class='price']/span"));
-		String priceArray[];
-		
+
+		hotelRatingsElement = driver
+				.findElements(separateLocators.separatingLocators(properties.getProperty("loc.starratingselement")));
+		detailsButton = driver
+				.findElements(separateLocators.separatingLocators(properties.getProperty("loc.detailsbtn")));
+		viewMoreButton = driver
+				.findElement(separateLocators.separatingLocators(properties.getProperty("loc.viewmore")));
 		noOfStars = new String[hotelRatingsElement.size()];
-		
-		WebElement viewMoreButton = driver.findElement(separatelocator.separatingLocators(properties.getProperty("loc.viewmore")));
- for (int index = 0; index < hotelRatingsElement.size(); index++) {
+
+		for (int index = 0; index < hotelRatingsElement.size(); index++) {
 
 			pageScroll.pageScrollDownTillElementVisible(driver, hotelRatingsElement.get(index));
 			noOfStars[index] = hotelRatingsElement.get(index).getText();
-	        List<WebElement> priceArrayElement=driver.findElements(By.xpath("//div[@class='price']/span"));
-	        	
- if (!(hotelRatingsElement.get(index).isDisplayed())) {
-				
+
+			if (!(hotelRatingsElement.get(index).isDisplayed())) {
+
 				pageScroll.pageScrollDownTillElementVisible(driver, viewMoreButton);
-				pageactions.clickingTheElement(driver, properties.getProperty("loc.viewmore"));
+				pagActions.clickingTheElement(driver, properties.getProperty("loc.viewmore"));
 				pageScroll.pageScrollDownTillElementVisible(driver, hotelRatingsElement.get(index));
 				noOfStars[index] = hotelRatingsElement.get(index).getText();
 			}
-
-	        String allHotelsPriceText = driver
-					.findElement(By
-							.xpath("(//div[@class='product-long-item']//div[@class='price']/span)[" + (index+1) + "]"))
-					.getText();
-			
-			String allHotelPriceTextArray[]= new String [2];
-			allHotelPriceTextArray=allHotelsPriceText.split("\\s");
-	
-			double allHotelPrice=Double.parseDouble(allHotelPriceTextArray[1]);
+			allHotelsPriceText = allHotelPricelist.get(index).getText();
+			allHotelPriceTextArray = allHotelsPriceText.split("\\s");
+			allHotelPrice = Double.parseDouble(allHotelPriceTextArray[1]);
 			allHotelPriceList.add(allHotelPriceIndex, allHotelPrice);
-		
+
 			allHotelPriceIndex++;
-	   if (noOfStars[index].contentEquals(noOfStarsExpected)) {
-					
-					String priceText = driver
-							.findElement(By
-									.xpath("(//div[@class='product-long-item']//div[@class='price']/span)[" + (index+1) + "]"))
-							.getText();
-					
-					String priceTextArray[]= new String [2];
-					priceTextArray=priceText.split("\\s");
-			
-					double removedSymbols=Double.parseDouble(priceTextArray[1]);
-					listOfHotelPrice.add(priceIndex, removedSymbols);
-					priceIndex++;
-				}
+
+			if (noOfStars[index].contentEquals(noOfStarsExpected)) {
+
+				priceText = allHotelPricelist.get(index).getText();
+				priceTextArray = priceText.split("\\s");
+				removedSymbols = Double.parseDouble(priceTextArray[1]);
+				listOfHotelPrice.add(priceIndex, removedSymbols);
+
+				priceIndex++;
+			}
 		}
 		log.info("Found all the Hotel in the 4 star rating with lowest price");
-		
-		List<Double> listOfHotelPriceAfterSorting = new ArrayList<Double>();
 
 		for (int duplicatingIndex = 0; duplicatingIndex < listOfHotelPrice.size(); duplicatingIndex++) {
-			
+
 			listOfHotelPriceAfterSorting.add(duplicatingIndex, listOfHotelPrice.get(duplicatingIndex));
 		}
 
 		Collections.sort(listOfHotelPriceAfterSorting);
-		
-        System.out.println(listOfHotelPriceAfterSorting.get(0));
-        
-        System.out.println(Double.toString(listOfHotelPriceAfterSorting.get(0)));
-        int finalIndex=allHotelPriceList.indexOf(listOfHotelPriceAfterSorting.get(0));
-        System.out.println(finalIndex);
-        List<WebElement>listofhotelname=driver.findElements(separatelocator.separatingLocators(properties.getProperty("loc.firsthotelname")));
-        String hotelName=listofhotelname.get(finalIndex).getText();
-        System.out.println(hotelName);
-        driver.navigate().back();
-        pageactions.clickingTheElement(driver, properties.getProperty("loc.button"));
 
+		finalIndex = allHotelPriceList.indexOf(listOfHotelPriceAfterSorting.get(0));
 
-			List<WebElement> detailsButton = driver
-					.findElements(separatelocator.separatingLocators(properties.getProperty("loc.detailsbtn")));
+		List<WebElement> listofhotelname = driver
+				.findElements(separateLocators.separatingLocators(properties.getProperty("loc.firsthotelname")));
+		String lowestPriceHotelName = listofhotelname.get(finalIndex).getText();
+		log.info("Four Star hotel with LowestPrice  -" + lowestPriceHotelName);
 
-			for(int index=0;index<4;index++) {
-			
-					pageScroll.pageScrollDownTillElementVisible(driver, detailsButton.get(finalIndex));
-			
-			  if (!(detailsButton.get(finalIndex).isDisplayed())) {
-				pageScroll.pageScrollDownTillElementVisible(driver, viewMoreButton);
-				pageactions.clickingTheElement(driver, properties.getProperty("loc.viewmore"));
-				
-			} else {
-				pageScroll.pageScrollDownTillElementVisible(driver, detailsButton.get(finalIndex));
-				detailsButton.get(finalIndex).click();
-				break;
-			}
-	}	
-}
-	public void hotelsSearchModification(WebDriver driver) throws IOException {
-		
-		pageactions.clickingTheElement(driver, properties.getProperty("loc.modifybtn"));
-		detailsValidation(driver);
-		pageactions.clickingTheElement(driver, properties.getProperty("loc.modifybtn"));
-	
-		
+		pageScroll.pageScrollDownTillElementVisible(driver, hotelRatingsElement.get(finalIndex));
+		detailsButton.get(finalIndex).click();
+
 	}
-	public void hotelDetailValidation(WebDriver driver) throws IOException {
-		
-		driver.findElement(separatelocator.separatingLocators(properties.getProperty("loc.hotelsdetailsbutton")));
-		assertionhelpers.assertingStringTexts(driver, "loc.hotelname", testdata.getProperty("expdata.hotelname"));
-		pageScroll.pageScrollDownTillElementVisible(driver, webElement(driver,"loc.checkout"));
-	    assertionhelpers.assertingStringTexts(driver, "loc.hotelplace", testdata.getProperty("expdata.hoteladdress"));
-        detailsValidation(driver);
-	
+
+	public void validatingTheCustomerDetailsInHotelResultsPage(WebDriver driver) throws IOException {
+
+		pagActions.clickingTheElement(driver, properties.getProperty("loc.modifybtn"));
+		customerDetailsValidation(driver);
+
 	}
-   public void detailsValidation(WebDriver driver) throws IOException {
-	   
-	    assertionhelpers.assertingStringTexts(driver, "loc.modifydestination",testdata.getProperty("expdata.hoteldestination"));
-        Assert.assertEquals(driver.findElement(separatelocator.separatingLocators(properties.getProperty("loc.adultno"))).getAttribute("value"),testdata.getProperty("expdata.noofadults"));
-		
-        String actualCheckInDate=driver.findElement(separatelocator.separatingLocators(properties.getProperty("loc.checkincart"))).getAttribute("value");
-        System.out.println(actualCheckInDate);
-		String expectedCheckInDate=dateHelpers.getDateFormat("dd-MM-yyyy",Integer.parseInt(testdata.getProperty("expdata.checkindate")));
-		Assert.assertEquals(driver.findElement(separatelocator.separatingLocators(properties.getProperty("loc.childno"))).getAttribute("value"),testdata.getProperty("expdata.noofchildmodify"));
-        Assert.assertEquals(actualCheckInDate, expectedCheckInDate);
-      
-		String actualCheckOutDate=driver.findElement(separatelocator.separatingLocators(properties.getProperty("loc.checkoutcart"))).getAttribute("value");
-		String expectedCheckOutDate=dateHelpers.getDateFormat("dd-MM-yyyy",Integer.parseInt(testdata.getProperty("expdata.checkoutdate")));
+
+	public void validatingDetailsInHotelDetailsPage(WebDriver driver) throws IOException {
+
+		assertionHelpers.assertingStringTexts(driver, "loc.hotelname", testData.getProperty("expdata.hotelname"));
+		pageScroll.pageScrollDownTillElementVisible(driver, webElement(driver, "loc.checkout"));
+		assertionHelpers.assertingStringTexts(driver, "loc.hotelplace", testData.getProperty("expdata.hoteladdress"));
+		customerDetailsValidation(driver);
+
+	}
+
+	public void customerDetailsValidation(WebDriver driver) throws IOException {
+
+		assertionHelpers.assertingStringTexts(driver, "loc.modifydestination",
+				testData.getProperty("expdata.hoteldestination"));
+		Assert.assertEquals(
+				driver.findElement(separateLocators.separatingLocators(properties.getProperty("loc.adultno")))
+						.getAttribute("value"),
+				testData.getProperty("expdata.noofadults"));
+
+		String actualCheckInDate = driver
+				.findElement(separateLocators.separatingLocators(properties.getProperty("loc.checkincart")))
+				.getAttribute("value");
+
+		String expectedCheckInDate = dateHelpers.getDateFormat("dd-MM-yyyy",
+				Integer.parseInt(testData.getProperty("expdata.checkindate")));
+		Assert.assertEquals(
+				driver.findElement(separateLocators.separatingLocators(properties.getProperty("loc.childno")))
+						.getAttribute("value"),
+				testData.getProperty("expdata.noofchildmodify"));
+		Assert.assertEquals(actualCheckInDate, expectedCheckInDate);
+
+		String actualCheckOutDate = driver
+				.findElement(separateLocators.separatingLocators(properties.getProperty("loc.checkoutcart")))
+				.getAttribute("value");
+		String expectedCheckOutDate = dateHelpers.getDateFormat("dd-MM-yyyy",
+				Integer.parseInt(testData.getProperty("expdata.checkoutdate")));
 		Assert.assertEquals(actualCheckOutDate, expectedCheckOutDate);
-		System.out.println(actualCheckInDate+actualCheckOutDate);
-   }
+
+	}
 }
